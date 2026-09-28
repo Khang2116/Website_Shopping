@@ -4,7 +4,8 @@ using Microsoft.AspNetCore.Mvc;
 namespace WebsiteShopping.Areas.Admin.Controllers
 {
     [Area("Admin")]
-    [Authorize(AuthenticationSchemes = "AdminCookie")]
+    // [Authorize(AuthenticationSchemes = "AdminCookie")]
+    [AllowAnonymous]
     public class DashboardController : Controller
     {
         public IActionResult Index()
