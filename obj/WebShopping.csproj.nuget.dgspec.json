@@ -1,17 +1,17 @@
 {
   "format": 1,
   "restore": {
-    "D:\\02_LT_FrontEnd_Web_ASPNET_Core\\ex3_ProjectShopping\\WebShopping\\WebShopping.csproj": {}
+    "D:\\02_LT_FrontEnd_Web_ASPNET_Core\\ex3_ProjectShopping\\Website_Shopping\\WebShopping.csproj": {}
   },
   "projects": {
-    "D:\\02_LT_FrontEnd_Web_ASPNET_Core\\ex3_ProjectShopping\\WebShopping\\WebShopping.csproj": {
+    "D:\\02_LT_FrontEnd_Web_ASPNET_Core\\ex3_ProjectShopping\\Website_Shopping\\WebShopping.csproj": {
       "version": "1.0.0",
       "restore": {
-        "projectUniqueName": "D:\\02_LT_FrontEnd_Web_ASPNET_Core\\ex3_ProjectShopping\\WebShopping\\WebShopping.csproj",
+        "projectUniqueName": "D:\\02_LT_FrontEnd_Web_ASPNET_Core\\ex3_ProjectShopping\\Website_Shopping\\WebShopping.csproj",
         "projectName": "WebShopping",
-        "projectPath": "D:\\02_LT_FrontEnd_Web_ASPNET_Core\\ex3_ProjectShopping\\WebShopping\\WebShopping.csproj",
+        "projectPath": "D:\\02_LT_FrontEnd_Web_ASPNET_Core\\ex3_ProjectShopping\\Website_Shopping\\WebShopping.csproj",
         "packagesPath": "C:\\Users\\Khang\\.nuget\\packages\\",
-        "outputPath": "D:\\02_LT_FrontEnd_Web_ASPNET_Core\\ex3_ProjectShopping\\WebShopping\\obj\\",
+        "outputPath": "D:\\02_LT_FrontEnd_Web_ASPNET_Core\\ex3_ProjectShopping\\Website_Shopping\\obj\\",
         "projectStyle": "PackageReference",
         "fallbackFolders": [
           "C:\\Program Files (x86)\\Microsoft Visual Studio\\Shared\\NuGetPackages"

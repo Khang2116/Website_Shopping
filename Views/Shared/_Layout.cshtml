@@ -17,20 +17,16 @@
     <link rel="stylesheet" href="~/css/responsive.css" />
 </head>
 <body>
-    <partial name="_Sidebar"/>
+    <partial name="_Header"/>
+    <partial name="_TopDiscount"/>
 
-    <div id="wrapper">
-        <partial name="_Header"/>
-        <partial name="_TopDiscount"/>
-
-        <div class="container">
-            <main role="main" class="pb-3">
-                @RenderBody()
-            </main>
-        </div>
-
-        <partial name="_Footer"/>
+    <div class="container">
+        <main role="main" class="pb-3">
+            @RenderBody()
+        </main>
     </div>
+
+    <partial name="_Footer"/>
 
     <script src="~/js/jquery/jquery-2.2.4.min.js"></script>
     <script src="~/js/popper.min.js"></script>
