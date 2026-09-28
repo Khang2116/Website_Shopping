@@ -1,0 +1,58 @@
+# ==========================================
+# Build results
+# ==========================================
+[Bb]in/
+[Oo]bj/
+[Dd]ebug/
+[Rr]elease/
+[Rr]eleases/
+x64/
+x86/
+[Aa]rtifacts/
+**/bin/
+**/obj/
+
+# ==========================================
+# Visual Studio / VS Code
+# ==========================================
+.vs/
+.vscode/
+*.user
+*.suo
+*.userosscache
+*.sln.docstates
+*.rsuser
+*.code-workspace
+
+# ==========================================
+# NuGet Packages
+# ==========================================
+packages/
+*.nupkg
+*.snupkg
+project.lock.json
+project.nuget.cache
+
+# ==========================================
+# Generated Files & Binary Outputs
+# ==========================================
+*.cache
+*.pdb
+*.dll
+*.exe
+*.log
+*.generated.cs
+*.g.cs
+*.g.i.cs
+
+# ==========================================
+# OS Generated Files
+# ==========================================
+.DS_Store
+Thumbs.db
+
+# ==========================================
+# Local Environment Configs (Chứa chuỗi kết nối / Secret Key)
+# ==========================================
+appsettings.Development.json
+appsettings.Local.json
