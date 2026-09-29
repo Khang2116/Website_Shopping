@@ -1,0 +1,48 @@
+@model Product
+@{
+    ViewData["Title"] = "Sửa sản phẩm";
+    Layout = "_LayoutAdmin";
+}
+
+<div class="container-fluid">
+    <h1 class="page-header">Sửa sản phẩm</h1>
+
+    <form asp-action="Edit" method="post" enctype="multipart/form-data">
+        <input type="hidden" asp-for="Id" />
+        <input type="hidden" asp-for="CreatedAt" />
+        <div asp-validation-summary="ModelOnly" class="text-danger"></div>
+        <div class="form-group">
+            <label asp-for="Name"></label>
+            <input asp-for="Name" class="form-control" />
+            <span asp-validation-for="Name" class="text-danger"></span>
+        </div>
+        <div class="form-group">
+            <label asp-for="CategoryId">Danh mục</label>
+            <select asp-for="CategoryId" asp-items="@(ViewBag.CategoryList as SelectList)" class="form-control"></select>
+            <span asp-validation-for="CategoryId" class="text-danger"></span>
+        </div>
+        <div class="form-group">
+            <label asp-for="Price"></label>
+            <input asp-for="Price" class="form-control" />
+            <span asp-validation-for="Price" class="text-danger"></span>
+        </div>
+        <div class="form-group">
+            <label asp-for="Description"></label>
+            <textarea asp-for="Description" class="form-control"></textarea>
+        </div>
+        <div class="form-group">
+            @if (!string.IsNullOrEmpty(Model.ImageUrl))
+            {
+                <img src="~/img/products/@Model.ImageUrl" width="100" class="img-thumbnail" /><br />
+            }
+            <label>Đổi ảnh (bỏ trống nếu giữ ảnh cũ)</label>
+            <input type="file" name="imageFile" class="form-control" />
+        </div>
+        <button type="submit" class="btn btn-primary">Cập nhật</button>
+        <a asp-action="Index" class="btn btn-default">Hủy</a>
+    </form>
+</div>
+
+@section Scripts {
+    <partial name="_ValidationScriptsPartial" />
+}

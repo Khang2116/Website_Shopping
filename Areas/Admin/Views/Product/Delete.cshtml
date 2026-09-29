@@ -1,0 +1,16 @@
+@model Product
+@{
+    ViewData["Title"] = "Xóa sản phẩm";
+    Layout = "_LayoutAdmin";
+}
+
+<div class="container-fluid">
+    <h1 class="page-header">Xác nhận xóa</h1>
+    <p>Bạn có chắc muốn xóa sản phẩm <strong>@Model.Name</strong>?</p>
+
+    <form asp-action="Delete" method="post">
+        <input type="hidden" asp-for="Id" />
+        <button type="submit" class="btn btn-danger">Xóa</button>
+        <a asp-action="Index" class="btn btn-default">Hủy</a>
+    </form>
+</div>
