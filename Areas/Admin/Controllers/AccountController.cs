@@ -1,7 +1,7 @@
 using Microsoft.AspNetCore.Authorization;
 using Microsoft.AspNetCore.Mvc;
 
-namespace Website_Shopping.Areas.Admin.Controllers
+namespace WebShopping.Areas.Admin.Controllers
 {
     [Area("Admin")]
     public class AccountController : Controller

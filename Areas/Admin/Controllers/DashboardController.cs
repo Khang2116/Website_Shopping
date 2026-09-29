@@ -1,7 +1,7 @@
 using Microsoft.AspNetCore.Authorization;
 using Microsoft.AspNetCore.Mvc;
 
-namespace WebsiteShopping.Areas.Admin.Controllers
+namespace WebShopping.Areas.Admin.Controllers
 {
     [Area("Admin")]
     // [Authorize(AuthenticationSchemes = "AdminCookie")]
