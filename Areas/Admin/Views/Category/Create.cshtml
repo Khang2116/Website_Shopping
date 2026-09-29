@@ -1,0 +1,28 @@
+@model Category
+@{
+    ViewData["Title"] = "Thêm danh mục";
+    Layout = "_LayoutAdmin";
+}
+
+<div class="container-fluid">
+    <h1 class="page-header">Thêm danh mục</h1>
+
+    <form asp-action="Create" method="post">
+        <div asp-validation-summary="ModelOnly" class="text-danger"></div>
+        <div class="form-group">
+            <label asp-for="Name"></label>
+            <input asp-for="Name" class="form-control" />
+            <span asp-validation-for="Name" class="text-danger"></span>
+        </div>
+        <div class="form-group">
+            <label asp-for="Description"></label>
+            <textarea asp-for="Description" class="form-control"></textarea>
+        </div>
+        <button type="submit" class="btn btn-primary">Lưu</button>
+        <a asp-action="Index" class="btn btn-default">Hủy</a>
+    </form>
+</div>
+
+@section Scripts {
+    <partial name="_ValidationScriptsPartial" />
+}
