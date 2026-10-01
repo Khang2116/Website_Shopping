@@ -1,20 +1,7 @@
-<section class="top-discount-area d-md-flex align-items-center">
-    <!-- Single Discount Area -->
-    <div class="single-discount-area">
-        <h5>Free Shipping &amp; Returns</h5>
-        <h6><a href="#">BUY NOW</a></h6>
-    </div>
-    <!-- Single Discount Area -->
-    <div class="single-discount-area">
-        <h5>20% Discount for all dresses</h5>
-        <h6>USE CODE: Colorlib</h6>
-    </div>
-    <!-- Single Discount Area -->
-    <div class="single-discount-area">
-        <h5>20% Discount for students</h5>
-        <h6>USE CODE: Colorlib</h6>
-    </div>
-</section>
+@model Product
+@{
+    ViewData["Title"] = Model.Name;
+}
 
 <!-- <<<<<<<<<<<<<<<<<<<< Breadcumb Area Start <<<<<<<<<<<<<<<<<<<< -->
 <div class="breadcumb_area">
@@ -22,12 +9,11 @@
         <div class="row">
             <div class="col-12">
                 <ol class="breadcrumb d-flex align-items-center">
-                    <li class="breadcrumb-item"><a href="#">Home</a></li>
-                    <li class="breadcrumb-item"><a href="#">Dresses</a></li>
-                    <li class="breadcrumb-item active">Long Dress</li>
+                    <li class="breadcrumb-item"><a asp-controller="Home" asp-action="Index">Home</a></li>
+                    <li class="breadcrumb-item"><a asp-action="Shop" asp-route-categoryId="@Model.CategoryId">@Model.Category?.Name</a></li>
+                    <li class="breadcrumb-item active">@Model.Name</li>
                 </ol>
-                <!-- btn -->
-                <a href="#" class="backToHome d-block"><i class="fa fa-angle-double-left"></i> Back to Category</a>
+                <a asp-action="Shop" asp-route-categoryId="@Model.CategoryId" class="backToHome d-block"><i class="fa fa-angle-double-left"></i> Back to Category</a>
             </div>
         </div>
     </div>
@@ -41,55 +27,23 @@
 
             <div class="col-12 col-md-6">
                 <div class="single_product_thumb">
-                    <div id="product_details_slider" class="carousel slide" data-ride="carousel">
-
-                        <ol class="carousel-indicators">
-                            <li class="active" data-target="#product_details_slider" data-slide-to="0" style="background-image: url(img/product-img/product-9.jpg);">
-                            </li>
-                            <li data-target="#product_details_slider" data-slide-to="1" style="background-image: url(img/product-img/product-2.jpg);">
-                            </li>
-                            <li data-target="#product_details_slider" data-slide-to="2" style="background-image: url(img/product-img/product-3.jpg);">
-                            </li>
-                            <li data-target="#product_details_slider" data-slide-to="3" style="background-image: url(img/product-img/product-4.jpg);">
-                            </li>
-                        </ol>
-
-                        <div class="carousel-inner">
-                            <div class="carousel-item active">
-                                <a class="gallery_img" href="img/product-img/product-9.jpg">
-                                <img class="d-block w-100" src="img/product-img/product-9.jpg" alt="First slide">
-                            </a>
-                            </div>
-                            <div class="carousel-item">
-                                <a class="gallery_img" href="img/product-img/product-2.jpg">
-                                <img class="d-block w-100" src="img/product-img/product-2.jpg" alt="Second slide">
-                            </a>
-                            </div>
-                            <div class="carousel-item">
-                                <a class="gallery_img" href="img/product-img/product-3.jpg">
-                                <img class="d-block w-100" src="img/product-img/product-3.jpg" alt="Third slide">
-                            </a>
-                            </div>
-                            <div class="carousel-item">
-                                <a class="gallery_img" href="img/product-img/product-4.jpg">
-                                <img class="d-block w-100" src="img/product-img/product-4.jpg" alt="Fourth slide">
-                            </a>
-                            </div>
-                        </div>
-                    </div>
+                    @if (!string.IsNullOrEmpty(Model.ImageUrl))
+                    {
+                        <img class="d-block w-100" src="~/img/products/@Model.ImageUrl" alt="@Model.Name">
+                    }
                 </div>
             </div>
 
             <div class="col-12 col-md-6">
                 <div class="single_product_desc">
 
-                    <h4 class="title"><a href="#">Long Yellow Dress</a></h4>
-
-                    <h4 class="price">$ 39.99</h4>
+                    <h4 class="title">@Model.Name</h4>
+                    <h5 class="price">@Model.Price.ToString("N0") đ</h5>
+                    <p>@Model.Description</p>
 
                     <p class="available">Available: <span class="text-muted">In Stock</span></p>
 
-                    <div class="single_product_ratings mb-15">
+                    <div class="single_product_ratings mb-15">`
                         <i class="fa fa-star" aria-hidden="true"></i>
                         <i class="fa fa-star" aria-hidden="true"></i>
                         <i class="fa fa-star" aria-hidden="true"></i>

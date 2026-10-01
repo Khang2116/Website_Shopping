@@ -18,7 +18,7 @@
                                 <!-- Cart List Area Start -->
                                 <ul class="cart-list">
                                     <li>
-                                        <a href="#" class="image"><img src="~/img/product-img/product-10.jpg" class="cart-thumb" alt=""></a>
+                                        <a href="#" class="image"><img src="~/img/products/product-10.jpg" class="cart-thumb" alt=""></a>
                                         <div class="cart-item-desc">
                                             <h6><a href="#">Women's Fashion</a></h6>
                                             <p>1x - <span class="price">$10</span></p>
@@ -26,7 +26,7 @@
                                         <span class="dropdown-product-remove"><i class="icon-cross"></i></span>
                                     </li>
                                     <li>
-                                        <a href="#" class="image"><img src="~/img/product-img/product-11.jpg" class="cart-thumb" alt=""></a>
+                                        <a href="#" class="image"><img src="~/img/products/product-11.jpg" class="cart-thumb" alt=""></a>
                                         <div class="cart-item-desc">
                                             <h6><a href="#">Women's Fashion</a></h6>
                                             <p>1x - <span class="price">$10</span></p>
@@ -76,10 +76,10 @@
                                         <a class="nav-link dropdown-toggle" href="#" id="karlDropdown" role="button" data-toggle="dropdown" aria-haspopup="true" aria-expanded="false">Pages</a>
                                         <div class="dropdown-menu" aria-labelledby="karlDropdown">
                                             <a class="dropdown-item" asp-controller="Home" asp-action="Index">Home</a>
-                                            <a class="dropdown-item" asp-controller="Shop" asp-action="Index">Shop</a>
-                                            <a class="dropdown-item" asp-controller="Product" asp-action="Details">Product Details</a>
-                                            <a class="dropdown-item" asp-controller="Cart" asp-action="Index">Cart</a>
-                                            <a class="dropdown-item" asp-controller="Checkout" asp-action="Index">Checkout</a>
+                                            <a class="dropdown-item" asp-controller="Product" asp-action="Shop">Shop</a>
+                                            <a class="dropdown-item" asp-controller="Product" asp-action="ProductDetails" asp-route-id="1">Product Details</a>
+                                            <a class="dropdown-item" asp-controller="Product" asp-action="Cart">Cart</a>
+                                            <a class="dropdown-item" asp-controller="Product" asp-action="Checkout">Checkout</a>
                                         </div>
                                     </li>
                                     <li class="nav-item"><a class="nav-link" href="#">Dresses</a></li>

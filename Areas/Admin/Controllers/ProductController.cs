@@ -8,7 +8,7 @@ using WebShopping.Models;
 namespace WebShopping.Areas.Admin.Controllers;
 
 [Area("Admin")]
-[AllowAnonymous]
+[Authorize(AuthenticationSchemes = "AdminCookie")]
 public class ProductController : Controller
 {
     private readonly ApplicationDbContext _db;

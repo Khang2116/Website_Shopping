@@ -7,7 +7,7 @@ using WebShopping.Models;
 namespace WebShopping.Areas.Admin.Controllers;
 
 [Area("Admin")]
-[AllowAnonymous] // [Authorize(AuthenticationSchemes = "AdminCookie")]
+[Authorize(AuthenticationSchemes = "AdminCookie")]
 public class CategoryController : Controller
 {
     private readonly ApplicationDbContext _db;
