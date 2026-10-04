@@ -17,21 +17,13 @@ public class HomeController : Controller
 
     public async Task<IActionResult> Index()
     {
-        var realProducts = await _db.Products
+        var products = await _db.Products
             .Include(p => p.Category)
             .OrderByDescending(p => p.CreatedAt)
+            .Take(8)
             .ToListAsync();
 
-        var displayList = new List<Product>(realProducts);
-
-        // Thiếu bao nhiêu so với 8, lấy ảnh tĩnh bù vào đúng bấy nhiêu
-        int missing = 8 - displayList.Count;
-        if (missing > 0)
-        {
-            displayList.AddRange(DemoProducts.SampleList.Take(missing));
-        }
-
-        return View(displayList.Take(8));
+        return View(products);
     }
 
     public IActionResult Privacy() => View();

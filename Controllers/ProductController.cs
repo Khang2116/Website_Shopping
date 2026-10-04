@@ -24,19 +24,12 @@ public class ProductController : Controller
             query = query.Where(p => p.CategoryId == categoryId);
         }
 
-        var realProducts = await query.ToListAsync();
-
-        var displayList = new List<Product>(realProducts);
-
-        if (!isFiltering && realProducts.Count == 0)
-        {
-            displayList.AddRange(DemoProducts.SampleList);
-        }
+        var products = await query.ToListAsync();
 
         ViewBag.Categories = await _db.Categories.OrderBy(c => c.Name).ToListAsync();
         ViewBag.SelectedCategoryId = categoryId;
 
-        return View(displayList);
+        return View(products);
     }
 
     public async Task<IActionResult> ProductDetails(int id)
@@ -52,16 +45,14 @@ public class ProductController : Controller
         return View(product);
     }
 
-    private const string CartSessionKey = "Cart";
-
     private List<CartItem> GetCart()
     {
-        return HttpContext.Session.GetObject<List<CartItem>>(CartSessionKey) ?? new List<CartItem>();
+        return HttpContext.Session.GetObject<List<CartItem>>(CartItem.SessionKey) ?? new List<CartItem>();
     }
 
     private void SaveCart(List<CartItem> cart)
     {
-        HttpContext.Session.SetObject(CartSessionKey, cart);
+        HttpContext.Session.SetObject(CartItem.SessionKey, cart);
     }
 
     public IActionResult Cart()
@@ -70,7 +61,7 @@ public class ProductController : Controller
     }
 
     [HttpPost]
-    public async Task<IActionResult> AddToCart(int productId, int quantity = 1)
+    public async Task<IActionResult> AddToCart(int productId, int quantity = 1, string? returnUrl = null)
     {
         var product = await _db.Products.FindAsync(productId);
         if (product == null) return NotFound();
@@ -96,6 +87,11 @@ public class ProductController : Controller
 
         SaveCart(cart);
         TempData["Success"] = "Đã thêm vào giỏ hàng";
+
+        if (!string.IsNullOrEmpty(returnUrl) && Url.IsLocalUrl(returnUrl))
+        {
+            return Redirect(returnUrl);
+        }
         return RedirectToAction(nameof(Cart));
     }
 

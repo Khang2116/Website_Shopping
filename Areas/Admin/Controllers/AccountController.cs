@@ -56,7 +56,7 @@ public class AccountController : Controller
         if (!string.IsNullOrEmpty(model.ReturnUrl) && Url.IsLocalUrl(model.ReturnUrl))
             return Redirect(model.ReturnUrl);
 
-        return RedirectToAction("Index", "Dashboard");
+        return RedirectToAction("Index", "Category");
     }
 
     public async Task<IActionResult> Logout()
