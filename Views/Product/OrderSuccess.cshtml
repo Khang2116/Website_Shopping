@@ -1,0 +1,11 @@
+@model Order
+@{
+    ViewData["Title"] = "Đặt hàng thành công";
+}
+
+<div class="container section_padding_100 text-center">
+    <h2>Đặt hàng thành công!</h2>
+    <p>Mã đơn hàng của bạn: <strong>#@Model.Id</strong></p>
+    <p>Cảm ơn <strong>@Model.CustomerName</strong>, chúng tôi sẽ sớm liên hệ qua số <strong>@Model.Phone</strong> để xác nhận đơn hàng.</p>
+    <a asp-action="Shop" class="btn karl-checkout-btn">Tiếp tục mua sắm</a>
+</div>

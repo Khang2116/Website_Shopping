@@ -83,13 +83,14 @@
                 </li>
                 <li class="divider"></li>
                 <li>
-                    <a asp-area="Admin" asp-controller="Account" asp-action="Logout"><i
-                        class="fa fa-sign-out fa-fw"></i> Logout</a>
-                    </li>
-                </ul>
-            </li>
-        </ul>
-        <!-- /.navbar-top-links -->
+                    <a asp-area="Admin" asp-controller="Account" asp-action="Logout">
+                        <i class="fa fa-sign-out fa-fw"></i> Logout
+                    </a>
+                </li>
+            </ul>
+        </li>
+    </ul>
+    <!-- /.navbar-top-links -->
 </nav>
 
 <aside class="sidebar navbar-default" role="navigation">
@@ -108,11 +109,19 @@
             </li>
             <li>
                 <a asp-area="Admin" asp-controller="Category" asp-action="Index"><i class="fa fa-list fa-fw"></i> Danh
-                    mục</a>
+                    mục
+                </a>
             </li>
             <li>
-                    <a asp-area="Admin" asp-controller="Product" asp-action="Index"><i class="fa fa-cube fa-fw"></i> Sản
-                        phẩm</a>
+                <a asp-area="Admin" asp-controller="Product" asp-action="Index"><i class="fa fa-cube fa-fw"></i> Sản
+                    phẩm
+                </a>
             </li>
-        </div>
+            <li>
+                <a asp-area="Admin" asp-controller="Order" asp-action="Index"><i class="fa fa-list-alt fa-fw"></i> Đơn
+                    hàng
+                </a>
+            </li>
+        </ul>
+    </div>
 </aside>

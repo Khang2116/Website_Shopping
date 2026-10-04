@@ -182,7 +182,7 @@ public class ProductController : Controller
     public async Task<IActionResult> OrderSuccess(int id)
     {
         var order = await _db.Orders
-            .Include(o => o.OrderDetails).ThenInclude(d => d.Product)
+            .Include(o => o.OrderDetails!).ThenInclude(d => d.Product)
             .FirstOrDefaultAsync(o => o.Id == id);
         if (order == null) return NotFound();
         return View(order);

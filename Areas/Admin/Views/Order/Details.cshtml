@@ -1,0 +1,55 @@
+@model Order
+@{
+    ViewData["Title"] = $"Đơn hàng #{Model.Id}";
+    Layout = "_LayoutAdmin";
+}
+
+<div class="container-fluid">
+    <h1 class="page-header">Đơn hàng #@Model.Id</h1>
+
+    @if (TempData["Success"] != null)
+    {
+        <div class="alert alert-success">@TempData["Success"]</div>
+    }
+
+    <p><strong>Khách hàng:</strong> @Model.CustomerName</p>
+    <p><strong>SĐT:</strong> @Model.Phone</p>
+    <p><strong>Địa chỉ:</strong> @Model.Address</p>
+    <p><strong>Ghi chú:</strong> @Model.Note</p>
+
+    <table class="table table-bordered">
+        <thead>
+            <tr>
+                <th>Sản phẩm</th>
+                <th>Số lượng</th>
+                <th>Đơn giá</th>
+                <th>Thành tiền</th>
+            </tr>
+        </thead>
+        <tbody>
+            @foreach (var d in Model.OrderDetails!)
+            {
+                <tr>
+                    <td>@d.Product?.Name</td>
+                    <td>@d.Quantity</td>
+                    <td>@d.UnitPrice.ToString("N0") đ</td>
+                    <td>@((d.Quantity * d.UnitPrice).ToString("N0")) đ</td>
+                </tr>
+            }
+        </tbody>
+    </table>
+    <p><strong>Tổng cộng: @Model.TotalAmount.ToString("N0") đ</strong></p>
+
+    <form asp-action="UpdateStatus" method="post" class="d-flex">
+        <input type="hidden" name="id" value="@Model.Id" />
+        <select name="status" class="form-control" style="width:200px">
+            @foreach (var s in new[] { "Chờ xử lý", "Đang giao", "Hoàn thành", "Đã hủy" })
+            {
+                <option value="@s" selected="@(s == Model.Status)">@s</option>
+            }
+        </select>
+        <button type="submit" class="btn btn-primary ms-2">Cập nhật trạng thái</button>
+    </form>
+
+    <a asp-action="Index" class="btn btn-default mt-3">Quay lại</a>
+</div>
