@@ -67,9 +67,6 @@
                                     }
                                 </ul>
                             </div>
-                            <div class="header-right-side-menu ml-15">
-                                <a href="#" id="sideMenuBtn"><i class="ti-menu" aria-hidden="true"></i></a>
-                            </div>
                         </div>
                     </div>
                 </div>
@@ -104,37 +101,33 @@
 
                             <div class="collapse navbar-collapse align-items-start" id="karl-navbar">
                                 <ul class="navbar-nav animated" id="nav">
-                                    <li class="nav-item active"><a class="nav-link" asp-controller="Home"
-                                                                       asp-action="Index">Home</a>
+                                    <li class="nav-item">
+                                        <a class="nav-link" asp-controller="Home" asp-action="Index">TRANG CHỦ</a>
                                     </li>
-                                    <li class="nav-item dropdown">
-                                        <a class="nav-link dropdown-toggle" href="#" id="karlDropdown" role="button"
-                                           data-toggle="dropdown" aria-haspopup="true" aria-expanded="false">Pages</a>
-                                        <div class="dropdown-menu" aria-labelledby="karlDropdown">
-                                            <a class="dropdown-item" asp-controller="Home" asp-action="Index">Home</a>
-                                            <a class="dropdown-item" asp-controller="Product" asp-action="Shop">Shop</a>
-                                            <a class="dropdown-item" asp-controller="Product"
-                                               asp-action="ProductDetails" asp-route-id="1">Product Details</a>
-                                            <a class="dropdown-item" asp-controller="Product" asp-action="Cart">Cart</a>
-                                            <a class="dropdown-item" asp-controller="Product"
-                                               asp-action="Checkout">Checkout</a>
-                                        </div>
+                                    <li class="nav-item">
+                                        <a class="nav-link" asp-controller="Product" asp-action="Shop">SẢN PHẨM</a>
                                     </li>
-                                    <li class="nav-item"><a class="nav-link" href="#">Dresses</a></li>
-                                    <li class="nav-item"><a class="nav-link" href="#"><span
-                                        class="karl-level">hot</span> Shoes</a>
+                                    <li class="nav-item">
+                                        <a class="nav-link" asp-controller="Product" asp-action="Cart">GIỎ HÀNG</a>
                                     </li>
-                                    <li class="nav-item"><a class="nav-link" href="#">Contact</a></li>
-                                </ul>
-                            </div>
-                        </nav>
-                    </div>
-                    <!-- Help Line -->
-                    <div class="help-line">
-                        <a href="tel:+346573556778"><i class="ti-headphone-alt"></i> +34 657 3556 778</a>
+                                    <li class="nav-item">
+                                        <a class="nav-link" asp-controller="Product" asp-action="Checkout">THANH
+                                            TOÁN</a>
+                                        </li>
+                                        <li class="nav-item">
+                                            <a class="nav-link" asp-area="Admin" asp-controller="Dashboard"
+                                               asp-action="Index">ADMIN</a>
+                                        </li>
+                                    </ul>
+                                </div>
+                            </nav>
+                        </div>
+                        <!-- Help Line -->
+                        <div class="help-line">
+                            <a href="tel:+346573556778"><i class="ti-headphone-alt"></i> +34 657 3556 778</a>
+                        </div>
                     </div>
                 </div>
             </div>
         </div>
-    </div>
-</header>
+    </header>

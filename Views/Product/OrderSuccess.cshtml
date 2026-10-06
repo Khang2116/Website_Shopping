@@ -4,8 +4,37 @@
 }
 
 <div class="container section_padding_100 text-center">
-    <h2>Đặt hàng thành công!</h2>
-    <p>Mã đơn hàng của bạn: <strong>#@Model.Id</strong></p>
-    <p>Cảm ơn <strong>@Model.CustomerName</strong>, chúng tôi sẽ sớm liên hệ qua số <strong>@Model.Phone</strong> để xác nhận đơn hàng.</p>
+    <h2>Cảm ơn bạn đã đặt hàng!</h2>
+    <p>Mã đơn hàng: <strong>#@Model.Id</strong></p>
+    <p>Chúng tôi sẽ liên hệ qua số <strong>@Model.Phone</strong> để xác nhận đơn hàng.</p>
+
+    <table class="table table-bordered text-left mt-4">
+        <thead>
+            <tr>
+                <th>Sản phẩm</th>
+                <th>Đơn giá</th>
+                <th>Số lượng</th>
+                <th>Thành tiền</th>
+            </tr>
+        </thead>
+        <tbody>
+        @foreach (var d in Model.OrderDetails!)
+        {
+            <tr>
+                <td>@d.Product?.Name</td>
+                <td>@d.UnitPrice.ToString("N0") đ</td>
+                <td>@d.Quantity</td>
+                <td>@((d.Quantity * d.UnitPrice).ToString("N0")) đ</td>
+            </tr>
+        }
+        </tbody>
+        <tfoot>
+            <tr>
+                <td colspan="3" class="text-right"><strong>Tổng cộng</strong></td>
+                <td><strong>@Model.TotalAmount.ToString("N0") đ</strong></td>
+            </tr>
+        </tfoot>
+    </table>
+
     <a asp-action="Shop" class="btn karl-checkout-btn">Tiếp tục mua sắm</a>
 </div>

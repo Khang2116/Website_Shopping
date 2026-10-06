@@ -13,9 +13,13 @@
                     {
                         <div class="alert alert-success">@TempData["Success"]</div>
                     }
-                    @if (!Model.Any())
+                    @if (TempData["Error"] != null)
                     {
-                        <p>Giỏ hàng đang trống. <a asp-action="Shop">Tiếp tục mua sắm</a></p>
+                        <div class="alert alert-danger">@TempData["Error"]</div>
+                    }
+                    else if (!Model.Any())
+                    {
+                        <div class="alert alert-danger">Giỏ hàng đang trống. <a asp-action="Shop">Tiếp tục mua sắm</a></div>
                     }
                     else
                     {
@@ -30,67 +34,71 @@
                                 </tr>
                             </thead>
                             <tbody>
-                            @foreach (var item in Model)
-                            {
-                                <tr>
-                                    <td class="cart_product_img d-flex align-items-center">
-                                        @if (!string.IsNullOrEmpty(item.ImageUrl))
-                                        {
-                                            <img src="~/img/products/@item.ImageUrl" alt="@item.Name" width="60">
-                                        }
-                                        <h6>@item.Name</h6>
-                                    </td>
-                                    <td class="price"><span>@item.Price.ToString("N0") đ</span></td>
-                                    <td class="qty">
-                                        <form asp-action="UpdateQuantity" method="post" class="d-flex">
-                                            <input type="hidden" name="productId" value="@item.ProductId" />
-                                            <input type="number" name="quantity" value="@item.Quantity" min="0" max="99" style="width:60px">
-                                            <button type="submit" class="btn btn-sm btn-outline-secondary ms-2">Cập nhật</button>
+                                @foreach (var item in Model)
+                                {
+                                    <tr>
+                                        <td class="cart_product_img d-flex align-items-center">
+                                            @if (!string.IsNullOrEmpty(item.ImageUrl))
+                                            {
+                                                <img src="~/img/products/@item.ImageUrl" alt="@item.Name" width="60">
+                                            }
+                                            <h6>@item.Name</h6>
+                                        </td>
+                                        <td class="price"><span>@item.Price.ToString("N0") đ</span></td>
+                                        <td class="qty">
+                                            <form asp-action="UpdateQuantity" method="post" class="d-flex">
+                                                <input type="hidden" name="productId" value="@item.ProductId" />
+                                                <input type="number" name="quantity" value="@item.Quantity" min="0" max="99"
+                                                       style="width:60px">
+                                                <button type="submit" class="btn btn-sm btn-outline-secondary ms-2">Cập
+                                                    nhật</button>
+                                                </form>
+                                            </td>
+                                            <td class="total_price"><span>@item.Total.ToString("N0") đ</span></td>
+                                            <td>
+                                                <form asp-action="RemoveFromCart" method="post">
+                                                    <input type="hidden" name="productId" value="@item.ProductId" />
+                                                    <button type="submit" class="btn btn-sm btn-danger">Xóa</button>
+                                                </form>
+                                            </td>
+                                        </tr>
+                                    }
+                                </tbody>
+                            </table>
+
+                            <div class="cart-footer d-flex mt-30">
+                                <div class="back-to-shop w-50">
+                                    <a asp-action="Shop">Tiếp tục mua sắm</a>
+                                </div>
+                                <div class="update-checkout w-50 text-right">
+                                    <form asp-action="ClearCart" method="post">
+                                        <button type="submit" class="btn btn-sm btn-outline-danger">Xóa toàn bộ giỏ
+                                            hàng</button>
                                         </form>
-                                    </td>
-                                    <td class="total_price"><span>@item.Total.ToString("N0") đ</span></td>
-                                    <td>
-                                        <form asp-action="RemoveFromCart" method="post">
-                                            <input type="hidden" name="productId" value="@item.ProductId" />
-                                            <button type="submit" class="btn btn-sm btn-danger">Xóa</button>
-                                        </form>
-                                    </td>
-                                </tr>
+                                    </div>
+                                </div>
                             }
-                            </tbody>
-                        </table>
-
-                        <div class="cart-footer d-flex mt-30">
-                            <div class="back-to-shop w-50">
-                                <a asp-action="Shop">Tiếp tục mua sắm</a>
-                            </div>
-                            <div class="update-checkout w-50 text-right">
-                                <form asp-action="ClearCart" method="post">
-                                    <button type="submit" class="btn btn-sm btn-outline-danger">Xóa toàn bộ giỏ hàng</button>
-                                </form>
-                            </div>
                         </div>
-                    }
-                </div>
-            </div>
-        </div>
-
-        @if (Model.Any())
-        {
-            <div class="row">
-                <div class="col-12 col-lg-4 offset-lg-8">
-                    <div class="cart-total-area mt-70">
-                        <div class="cart-page-heading">
-                            <h5>Tổng cộng</h5>
-                        </div>
-                        <ul class="cart-total-chart">
-                            <li><span>Tạm tính</span> <span>@subtotal.ToString("N0") đ</span></li>
-                            <li><span><strong>Tổng</strong></span> <span><strong>@subtotal.ToString("N0") đ</strong></span></li>
-                        </ul>
-                        <a asp-action="Checkout" class="btn karl-checkout-btn">Tiến hành thanh toán</a>
                     </div>
                 </div>
+
+                @if (Model.Any())
+                {
+                    <div class="row">
+                        <div class="col-12 col-lg-4 offset-lg-8">
+                            <div class="cart-total-area mt-70">
+                                <div class="cart-page-heading">
+                                    <h5>Tổng cộng</h5>
+                                </div>
+                                <ul class="cart-total-chart">
+                                    <li><span>Tạm tính</span> <span>@subtotal.ToString("N0") đ</span></li>
+                                    <li><span><strong>Tổng</strong></span> <span><strong>@subtotal.ToString("N0") đ</strong></span>
+                                    </li>
+                                </ul>
+                                <a asp-action="Checkout" class="btn karl-checkout-btn">Tiến hành thanh toán</a>
+                            </div>
+                        </div>
+                    </div>
+                }
             </div>
-        }
-    </div>
-</div>
+        </div>
